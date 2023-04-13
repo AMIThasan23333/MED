@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import BookingModal from '../BookingModal/BookingModal';
 import AppointmentOption from './AppointmentOption';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../components/Loadind/Loading';
 
 const AvailableAppointments = ({ selectedDate }) => {
     // const [appointmentOptions, setAppointmentOptions] = useState([]);
@@ -13,7 +14,7 @@ const AvailableAppointments = ({ selectedDate }) => {
 
 
       
-    const { data : appointmentOptions = [], refetch } = useQuery({
+    const { data : appointmentOptions = [], refetch , isLoading } = useQuery({
 
         queryKey : ['appointmentOptions', date],
         queryFn : async  () =>  {
@@ -24,6 +25,11 @@ const AvailableAppointments = ({ selectedDate }) => {
         }
        
     })
+
+    if(isLoading){
+
+        return <Loading></Loading>
+    }
 
 
 
