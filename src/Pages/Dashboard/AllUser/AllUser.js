@@ -19,7 +19,7 @@ const AllUser = () => {
 
         fetch(`http://localhost:5000/users/admin/${id}`, {
 
-       method : 'POST'
+       method : 'PUT'
 
         })
         .then(res => res.json())
