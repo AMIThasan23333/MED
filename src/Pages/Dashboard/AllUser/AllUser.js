@@ -29,8 +29,10 @@ const AllUser = () => {
       <tr>
         <th></th>
         <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th>Delete</th>
+
       </tr>
     </thead>
     <tbody>
@@ -42,14 +44,11 @@ const AllUser = () => {
                 <th>{i + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td></td>
+                <td> <button  className='btn  btn-xs btn-primary'></button>Make Admin </td>
+                <td> <button  className='btn  btn-xs btn-primary'></button> Delete </td>
               </tr>
-
-
             )
-
-        }
-     
+        }    
     </tbody>
   </table>
 </div>
