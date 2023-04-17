@@ -15,6 +15,18 @@ const AllUser = () => {
     })
 
 
+    const handleAdmin = id => {
+
+        fetch(`http://localhost:5000/users/admin/${id}`, {
+
+       method : 'POST'
+
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+        })
+    }
 
 
 
@@ -44,8 +56,8 @@ const AllUser = () => {
                 <th>{i + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td> <button  className='btn  btn-xs btn-primary'></button>Make Admin </td>
-                <td> <button  className='btn  btn-xs btn-primary'></button> Delete </td>
+                <td> <button onClick={ () =>handleAdmin(user._id)}  className='btn  btn-xs btn-primary'>Make Admin</button></td>
+                <td> <button  className='btn  btn-xs btn-primary'> Delete </button></td>
               </tr>
             )
         }    
