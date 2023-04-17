@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
-import useToken from '../../Hooks/UseToken';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import useToken from '../../../Hooks/UseToken';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();

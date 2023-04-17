@@ -4,10 +4,13 @@ import Appointment from "../../Pages/Appointment/Appointment/Appointment";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
-import SignUp from "../../Pages/SignUp/SignUp";
+import SignUp from "../../Pages/Shared/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Pages/Dashboard/DashboardLayout";
 import MyAppointment from "../../Pages/Dashboard/Dashboard/MyAppointment/MyAppointment";
+// import AllUSER from "../../Pages/AlluSER/AllUser.JS";
+import AllUser from "../../Pages/Dashboard/AllUser/AllUser";
+
 
 const router = createBrowserRouter([
     {
@@ -41,6 +44,11 @@ const router = createBrowserRouter([
              {
                 path : '/dashboard',
                 element :<MyAppointment></MyAppointment>
+
+             },             
+             {
+                path : 'dashboard/users',
+                element :<AllUser></AllUser>
 
              }
 
