@@ -22,7 +22,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
+                        saveUser(data.name, data.email);
                      })
                     .catch(err => console.log(err));
             })
@@ -31,6 +31,48 @@ const SignUp = () => {
                 setSignUPError(error.message)
             });
     }
+
+
+    const saveUser = (name,email) => {
+
+        const user = {name,email};
+
+        fetch('http://localhost:5000/users', {
+
+        method : 'POST',
+
+        headers : {
+
+            'content-type' : 'application/json'
+        },
+
+        body :JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+           
+            getUserToken(email)
+
+        })
+    }
+
+
+   
+      const getUserToken  = email  => {
+
+
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.accessToken){
+                localStorage.setItem('accessToken', data.accessToken);
+                navigate('/');
+            }
+        })
+      }
+
+
+
 
     return (
         <div className='h-[800px] flex justify-center items-center'>
