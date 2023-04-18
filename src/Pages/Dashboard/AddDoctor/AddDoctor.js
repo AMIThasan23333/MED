@@ -26,6 +26,7 @@ const AddDoctor = () => {
 
 
         const handleAddDoctor = data => {
+            console.log(data)
         }
 
 
@@ -51,8 +52,13 @@ const AddDoctor = () => {
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Specialty</span></label>
                     
-                        <select className="select select-ghost w-full max-w-xs">
-                            <option disabled selected>Please select a Specialty</option>
+                        <select
+                        
+                        {...register('specialty')}
+
+
+                        className="select select-ghost w-full max-w-xs">
+                            {/* <option disabled selected>Please select a Specialty</option> */}
                            {
                             specialties.map(specialty =>  <option
                             
@@ -62,6 +68,13 @@ const AddDoctor = () => {
                            }
                            
                     </select>
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Photo</span></label>
+                        <input type="file" {...register("img", {
+                            required: "Photo is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                     </div>
                     <input className='btn btn-accent w-full mt-4' value="Add A Doctor" type="submit" />
                 </form>
