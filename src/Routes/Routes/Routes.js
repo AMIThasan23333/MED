@@ -55,7 +55,7 @@ const router = createBrowserRouter([
              },
 
              {
-                path : '/dashboard/users',
+                path : '/dashboard/addDoctor',
                 element :<AdminRoute><AddDoctor></AddDoctor></AdminRoute>
 
              }
