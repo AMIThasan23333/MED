@@ -9,6 +9,9 @@ const AddDoctor = () => {
         const { signIn } = useContext(AuthContext);
         const [loginError, setLoginError] = useState('');
 
+        const imageHostKey =process.env.REACT_APP_imgbb_key;
+
+        console.log(imageHostKey);
 
         const {data : specialties = [] , isLoading} = useQuery({
             queryKey : ['specialty'],
