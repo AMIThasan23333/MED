@@ -1,10 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useState } from 'react';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 
 const ManageDoctor = () => {
 
-    const url = `http://localhost:5000/doctors`
 
+
+    const [DeletingDoctor, setDeletingDoctor] = useState(null);
+
+    const closeModal = () => {
+        setDeletingDoctor(null);
+    }
+
+    const handleDeleteDoctor = doctor => {
+        console.log(doctor)
+    }
+
+    const url = `http://localhost:5000/doctors`
     const { data : doctors = []} = useQuery({
         queryKey : ['doctors'],
         queryFn : async () => {
@@ -61,20 +74,33 @@ const ManageDoctor = () => {
     <img src={doctor.image}  alt=''/>
   </div>
 </div>
+
+
     </td>
     <td>{doctor.name}</td>
     <td>{doctor.email}</td>
     <td>{doctor.specialty}</td>
-    <th><button className="btn btn-outline btn-error">Delete </button> </th>
-   
+    <th>
+    <label  onClick={() =>  setDeletingDoctor(doctor)} htmlFor="my-modal"  className="btn btn-outline btn-error">Delete</label>
+       </th>
   </tr>)
    }
-   
-
-     
+       
     </tbody>
   </table>
 </div>
+               
+               {
+                DeletingDoctor && <ConfirmationModal
+
+                title= {` Are You sure you want to delete`}
+                message= {`IF you delete ${DeletingDoctor.name} It can not be undone`}
+                closeModal={closeModal}
+                 modalData={DeletingDoctor}
+                successAction={handleDeleteDoctor}>
+                </ConfirmationModal>
+               }
+
         </div>
     );
 };
