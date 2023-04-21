@@ -8,28 +8,43 @@ const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
         const { signIn } = useContext(AuthContext);
         const [loginError, setLoginError] = useState('');
-
-        const imageHostKey =process.env.REACT_APP_imgbb_key;
-
+        const imageHostKey =process.env.REACT_APP_imgb_key;
         console.log(imageHostKey);
-
         const {data : specialties = [] , isLoading} = useQuery({
             queryKey : ['specialty'],
             queryFn : async () => {
-
                 const res = await fetch('http://localhost:5000/appointmentSpecialty');
-
                 const data = await res.json();
-
                 return data;
-
-
             }
         })
 
 
         const handleAddDoctor = data => {
-            console.log(data)
+           
+            const image = data.image[0];
+
+            console.log(image)
+
+            const formData = new FormData();
+
+            formData.append('image' , image);
+
+
+            const url =`https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+
+
+            fetch(url, {
+
+                method :'POST',   
+                body : formData,        
+            })
+            .then(res => res.json())
+            .then(imgData =>{
+                console.log(imgData)
+            })
+
+
         }
 
 
@@ -74,7 +89,7 @@ const AddDoctor = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Photo</span></label>
-                        <input type="file" {...register("img", {
+                        <input type="file" {...register("image", {
                             required: "Photo is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
