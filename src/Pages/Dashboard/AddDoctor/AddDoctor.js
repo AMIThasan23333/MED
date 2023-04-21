@@ -2,12 +2,19 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddDoctor = () => {
 
+
+    const navigate = useNavigate('')
+
     const { register, formState: { errors }, handleSubmit } = useForm();
         const { signIn } = useContext(AuthContext);
+
         const [loginError, setLoginError] = useState('');
+
         const imageHostKey =process.env.REACT_APP_imgb_key;
         console.log(imageHostKey);
         const {data : specialties = [] , isLoading} = useQuery({
@@ -41,7 +48,44 @@ const AddDoctor = () => {
             })
             .then(res => res.json())
             .then(imgData =>{
-                console.log(imgData)
+            
+                if(imgData.success){
+
+                    console.log(imgData.data.url);
+
+                }
+
+                const doctor = {
+
+                    name : data.name,
+                    email : data.email,
+                    specialty : data.specialty,
+                    image : imgData.data.url,
+
+                }
+
+                fetch('http://localhost:5000/doctors', {
+                    method : 'POST',
+                    headers : {
+                        'content-type' : 'application/json',
+
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`                       
+                    },
+
+                    body: JSON.stringify(doctor)
+
+
+                })
+
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    toast.success(`${data.name} is added successfully  `)
+
+                    navigate('/dashoboard/manageDpctor')
+                })
+
+            
             })
 
 
