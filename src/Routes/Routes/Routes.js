@@ -16,12 +16,14 @@ import AddDoctor from "../../Pages/Dashboard/AddDoctor/AddDoctor";
 // import ManangeDoctor from "../../Pages/Dashboard/ManageDoctor/ManangeDoctor";
 import ManageDoctor from './../../Pages/Dashboard/AllUser/ManageDoctor';
 import Payment from './../../Pages/Dashboard/Payment/Payment';
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>, 
+        errorElement : <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
