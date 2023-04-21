@@ -7,7 +7,10 @@ import Loading from './../../Shared/Loading/Loading';
 import ConfirmationModal from './../../Shared/ConfirmationModal/ConfirmationModal';
 
 const ManageDoctors = () => {
+
+  
     const [deletingDoctor, setDeletingDoctor] = useState(null);
+
 
     const closeModal = () => {
         setDeletingDoctor(null);
