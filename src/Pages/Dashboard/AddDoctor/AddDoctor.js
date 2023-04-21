@@ -82,7 +82,7 @@ const AddDoctor = () => {
                     console.log(result);
                     toast.success(`${data.name} is added successfully  `)
 
-                    navigate('/dashoboard/manageDpctor')
+                    navigate('/dashboard/manageDoctor')
                 })
 
             
