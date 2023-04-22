@@ -53,7 +53,8 @@ const router = createBrowserRouter([
                 path : '/dashboard',
                 element :<MyAppointment></MyAppointment>
 
-             },             
+             },       
+                   
              {
                 path : '/dashboard/users',
                 element :<AdminRoute><AllUser></AllUser></AdminRoute>
@@ -71,12 +72,12 @@ const router = createBrowserRouter([
                 element :<AdminRoute><ManageDoctor></ManageDoctor></AdminRoute>
 
              },
-             {
-                path : '/dashboard/payment/:id',
-                element :<AdminRoute><Payment></Payment></AdminRoute>,
-                loader : ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
 
-             }
+             {
+                path: '/dashboard/payment/:id',
+                element: <AdminRoute><Payment></Payment></AdminRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
 
         ]
     }
