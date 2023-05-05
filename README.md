@@ -14,27 +14,13 @@ Some Functionalities about the website are given below:
 
 - This website is user-friendly and easy to use.
 
-- It has separate login and registration page. User can login with their social accounts such as google or github. Besides,they can sign up and login manually with their email and password. 
+- It has separate login and registration page. User can login with their social accounts such as google.  Besides,they can sign up and login manually with their email and password. 
 - The Home page shows  all the services available  
 - If you are a admin than you can see all the login user, all the doctors , you can add a doctor , manage a doctor ,  delete a doctor , make some one admin 
 - You can not book two appointments in a day
 -After booking a appointment booking will be reduce
 -
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### List of technologies used by 
 
