@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 https://fir-practice-8f286.web.app/
 
+## Admin email :cej1oy61iq@coooooool.com   password : asdfghA1@
+
 ## Features
 
 Some Functionalities about the website are given below:
